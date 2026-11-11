@@ -1,5 +1,6 @@
 #include <iostream>
 #include <chrono>
+#include <cmath>
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/laser_scan.hpp>
 #include <nav_msgs/msg/odometry.hpp>
@@ -21,16 +22,13 @@ private:
     rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_sub_;
     rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_sub_;
 
-    // Callback'ler
     void lidar_map_callback(const sensor_msgs::msg::LaserScan::SharedPtr msg);
     void odom_callback(const nav_msgs::msg::Odometry::SharedPtr msg);
     void update_map();
 
-    // Robotun odom çerçevesindeki son pozu (odom_callback yazar, lidar_map_callback okur)
     double robot_x_m = 0.0;
     double robot_y_m = 0.0;
     double robot_yaw_rad = 0.0;
 
-    // Birikimli harita görüntüsü
     cv::Mat map_;
 };

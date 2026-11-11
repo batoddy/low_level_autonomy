@@ -27,11 +27,11 @@ install(TARGETS
   lidar_odom_map_node
   DESTINATION lib/${PROJECT_NAME})
 
-# add_executable(bump_go_node src/bump_go.cpp)
-# ament_target_dependencies(bump_go_node rclcpp sensor_msgs geometry_msgs)
-# install(TARGETS
-#   bump_go_node
-#   DESTINATION lib/${PROJECT_NAME})
+add_executable(bump_go_node src/bump_go.cpp)
+ament_target_dependencies(bump_go_node rclcpp sensor_msgs geometry_msgs)
+install(TARGETS
+  bump_go_node
+  DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME}/
